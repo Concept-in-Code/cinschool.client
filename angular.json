@@ -27,9 +27,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/portal/src/favicon.ico",
-              "projects/portal/src/assets"
+              "projects/portal/src/assets",
+              {
+                "input": "projects/common/assets",
+                "glob": "**/*",
+                "output": "assets"
+              }
             ],
             "styles": [
+              "common/styles/variables.scss",
+              "common/styles/theme.scss",
+
               "projects/portal/src/styles.scss"
             ],
             "scripts": []
@@ -121,9 +129,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/admin/src/favicon.ico",
-              "projects/admin/src/assets"
+              "projects/admin/src/assets",
+              {
+                "input": "projects/common/assets",
+                "glob": "**/*",
+                "output": "assets"
+              } 
             ],
             "styles": [
+              "common/styles/variables.scss",
+              "common/styles/theme.scss",
+
               "projects/admin/src/styles.scss"
             ],
             "scripts": []

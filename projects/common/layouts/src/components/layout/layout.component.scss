@@ -1,0 +1,11 @@
+main {
+  display: flex;
+  flex-flow: column;
+  padding-top: var(--mat-toolbar-height);
+
+  height: calc(100vh - var(--mat-toolbar-height));
+}
+
+common-footer {
+  margin-top: 5rem;
+}
