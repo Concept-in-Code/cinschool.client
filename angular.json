@@ -26,7 +26,6 @@
             "tsConfig": "projects/portal/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/portal/src/favicon.ico",
               "projects/portal/src/assets",
               {
                 "input": "projects/common/assets",
@@ -35,8 +34,7 @@
               }
             ],
             "styles": [
-              "common/styles/variables.scss",
-              "common/styles/theme.scss",
+              "common/styles/styles.scss",
 
               "projects/portal/src/styles.scss"
             ],
@@ -94,7 +92,6 @@
             "tsConfig": "projects/portal/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/portal/src/favicon.ico",
               "projects/portal/src/assets"
             ],
             "styles": [
@@ -128,7 +125,6 @@
             "tsConfig": "projects/admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/admin/src/favicon.ico",
               "projects/admin/src/assets",
               {
                 "input": "projects/common/assets",
@@ -137,8 +133,7 @@
               } 
             ],
             "styles": [
-              "common/styles/variables.scss",
-              "common/styles/theme.scss",
+              "common/styles/styles.scss",
 
               "projects/admin/src/styles.scss"
             ],
@@ -196,7 +191,6 @@
             "tsConfig": "projects/admin/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/admin/src/favicon.ico",
               "projects/admin/src/assets"
             ],
             "styles": [
@@ -236,6 +230,105 @@
               "zone.js",
               "zone.js/testing"
             ]
+          }
+        }
+      }
+    },
+    "account": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/account",
+      "sourceRoot": "projects/account/src",
+      "prefix": "account",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/account",
+            "index": "projects/account/src/index.html",
+            "browser": "projects/account/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/account/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/account/src/assets",
+              {
+                "input": "projects/common/assets",
+                "glob": "**/*",
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "common/styles/styles.scss",
+
+              "projects/account/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "account:build:production"
+            },
+            "development": {
+              "buildTarget": "account:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "account:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/account/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/account/src/assets"
+            ],
+            "styles": [
+              "projects/account/src/styles.scss"
+            ],
+            "scripts": []
           }
         }
       }

@@ -1,0 +1,17 @@
+.form-box {
+  display: flex;
+  flex-flow: column;
+  width: 30rem;
+  max-width: calc(100% - var(--gap));
+  margin: var(--gap) auto;
+
+  button {
+    width: 100%;
+  }
+}
+
+.logo {
+  height: var(--logo-height);
+  margin: 1rem;
+  align-self: flex-start;
+}

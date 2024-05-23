@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LayoutComponent } from 'common/layouts';
-import packageJson from '../../../../package.json';
+import { CommonLayoutComponent } from 'common/layouts';
+import packageJson from '../../../package.json';
 
 @Component({
-  selector: 'common-root',
+  selector: 'portal-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true,
   imports: [
     RouterOutlet,
-    LayoutComponent,
+    CommonLayoutComponent,
   ],
 })
 export class AppComponent {

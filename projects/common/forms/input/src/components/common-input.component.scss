@@ -1,0 +1,24 @@
+mat-form-field {
+  width: 100%;
+
+  div[matSuffix] {
+    margin-right: .5rem;
+  }
+}
+
+:host ::ng-deep {
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  .mdc-text-field { 
+    background-color: var(--color-lightest) !important;
+    border-radius: var(--shape) !important;
+  }
+
+  .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: var(--shape) !important;
+  }
+
+}

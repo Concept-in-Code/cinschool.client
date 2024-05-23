@@ -1,0 +1,29 @@
+<img class="logo" src="assets/logo.svg" alt="logo">
+
+<form class="border-box form-box"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()">
+  <h2>Registrieren</h2>
+
+  <common-input formControlName="email"
+    label="Email">
+  </common-input>
+
+  <common-password-confirm formControlName="password">
+  </common-password-confirm>
+
+  <common-divider></common-divider>
+
+  <common-button
+    [disabled]="!form.valid"
+    layout="primary"
+    type="submit">
+    Registrieren
+  </common-button>
+
+  <common-button
+    layout="secondary"
+    [routerLink]="['']">
+    Login
+  </common-button>
+</form>

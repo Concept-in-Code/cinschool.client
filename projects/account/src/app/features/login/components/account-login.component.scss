@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+common-divider {
+  margin: .5rem 0;
+}

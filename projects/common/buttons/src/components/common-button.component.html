@@ -1,0 +1,12 @@
+<ng-container
+  *ngComponentOutlet="button;
+    content: [[content]]
+    inputs: {
+      disabled,
+      type
+    }">
+</ng-container>
+
+<div #content>
+  <ng-content></ng-content>
+</div>

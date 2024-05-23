@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LayoutComponent } from 'common/layouts';
+import { CommonLayoutComponent } from 'common/layouts';
 import packageJson from '../../../../package.json';
 
 @Component({
@@ -9,7 +9,7 @@ import packageJson from '../../../../package.json';
   styleUrl: './app.component.scss',
   standalone: true,
   imports: [
-    LayoutComponent,
+    CommonLayoutComponent,
     RouterOutlet
   ],
 })

@@ -3,14 +3,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'common-footer',
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+  templateUrl: './common-footer.component.html',
+  styleUrl: './common-footer.component.scss',
   standalone: true,
   imports:[
     MatToolbarModule,
   ]
 })
-export class FooterComponent {
+export class CommonFooterComponent {
 
   @Input({ required: true})
   public version!: string;

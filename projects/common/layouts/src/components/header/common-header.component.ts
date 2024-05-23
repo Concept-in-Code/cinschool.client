@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'common-header',
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  templateUrl: './common-header.component.html',
+  styleUrl: './common-header.component.scss',
   standalone: true,
   imports: [
     MatToolbarModule,
