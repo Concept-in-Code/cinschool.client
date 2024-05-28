@@ -2,9 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Maybe } from 'common/core';
-import { CommonValidators } from 'common/forms/validators';
+import { CommonPasswordService, CommonValidators } from 'common/forms/validators';
 import { Subject, takeUntil } from 'rxjs';
-import { PasswordService } from '../../services/password.service';
 import { CommonPasswordInputComponent } from '../input/common-password-input.component';
 import { CommonPasswordStrengthComponent } from '../strength/common-password-strength.component';
 
@@ -36,12 +35,18 @@ import { CommonPasswordStrengthComponent } from '../strength/common-password-str
 export class CommonPasswordConfirmComponent implements ControlValueAccessor, OnDestroy, Validator {
 
   public form = this.fb.group({
-    password: ['',
-      [Validators.required],
-      [this.passwordService.validate.bind(this.passwordService)]
-    ],
-    confirm: ['', [Validators.required]]
-  }, {validators: CommonValidators.same('password', 'confirm')});
+    password: ['', {
+      validators: [
+        Validators.required,
+      ],
+      asyncValidators: [CommonValidators.passwordStrength(this.passwordService)],
+    }],
+    confirm: ['', {
+      validators: [
+        Validators.required,
+      ],
+    }],
+  }, { validators: CommonValidators.same('password', 'confirm') });
 
   private onChange?: (value?: Maybe<string>) => void;
   private onTouched?: () => void;
@@ -50,7 +55,7 @@ export class CommonPasswordConfirmComponent implements ControlValueAccessor, OnD
 
   constructor(
     private fb: FormBuilder,
-    private passwordService: PasswordService) {
+    private passwordService: CommonPasswordService) {
       this.form.valueChanges
         .pipe(takeUntil(this.destroy))
         .subscribe(value => this.mark(value?.password));

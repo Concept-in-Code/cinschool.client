@@ -5,6 +5,10 @@
   (ngSubmit)="onSubmit()">
   <h2>Registrieren</h2>
 
+  <common-input formControlName="username"
+    label="Benutzername">
+  </common-input>
+
   <common-input formControlName="email"
     label="Email">
   </common-input>
@@ -26,4 +30,7 @@
     [routerLink]="['']">
     Login
   </common-button>
+
+  <div>
+  </div>
 </form>

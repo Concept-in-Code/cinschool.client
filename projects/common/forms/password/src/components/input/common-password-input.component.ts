@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonInputComponent } from '../../../../input';
+import { CommonInputComponent } from 'common/forms/input';
 
 @Component({
   selector: 'common-password-input',

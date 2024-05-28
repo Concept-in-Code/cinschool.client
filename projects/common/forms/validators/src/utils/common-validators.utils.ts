@@ -1,4 +1,6 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { map, of, take } from 'rxjs';
+import { CommonPasswordService } from '../services/common-password.service';
 
 export class CommonValidators {
 
@@ -10,6 +12,23 @@ export class CommonValidators {
         ? { invalidEmail: true }
         : null
       : null;
+  }
+
+  public static passwordStrength(passwordService: CommonPasswordService): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      if (!control.value) {
+        return of(null);
+      }
+      
+      return passwordService.isValid(control.value)
+        .pipe(
+          map(valid => valid
+            ? null
+            : { passwordWeak : true }
+          ),
+          take(1),
+        );
+    };
   }
 
   public static same(...controls: string[]): ValidatorFn {

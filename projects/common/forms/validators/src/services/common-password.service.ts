@@ -1,45 +1,39 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
 import { Maybe } from 'common/core';
-import { BehaviorSubject, Observable, map, of, take, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class PasswordService {
+export class CommonPasswordService {
 
-  private strengthRate = new BehaviorSubject<Maybe<number>>(undefined);
+  private strength = new BehaviorSubject<Maybe<number>>(undefined);
 
   private minEntropy = new BehaviorSubject<number>(40);
 
   public passwordStrength(): Observable<Maybe<number>> {
-    return this.strengthRate.asObservable();
+    return this.strength.asObservable();
   }
 
   public resetPasswordStrength(): void {
-    this.strengthRate.next(undefined);
+    this.strength.next(undefined);
   }
 
-  public setMinStrengthEntropy(minEntropy: number) {
+  public setMinEntropy(minEntropy: number) {
     this.minEntropy.next(minEntropy);
   }
 
-  public validate(
-    control: AbstractControl,
-  ): Observable<Maybe<{passwordWeak: boolean }>> {
-    if (!control.value) {
-      return of(null);
-    }
-
+  public isValid(
+    value: string,
+  ): Observable<boolean> {
     return this.minEntropy.asObservable()
       .pipe(
-        map(minEntropy => this.calculatePasswordEntropy(control.value) / minEntropy),
-        tap(strengthRate => this.strengthRate.next(strengthRate)),
-        map(strengthRate => strengthRate < 1 ? { passwordWeak : true } : null),
-        take(1),
-      )
+        map(minEntropy => this.calculateEntropy(value) / minEntropy),
+        tap(strengthRate => this.strength.next(strengthRate)),
+        map(strengthRate => strengthRate > 1),
+      );
   }
 
   //TODO: Use zxcvbn
-  private calculatePasswordEntropy(password: string): number {
+  private calculateEntropy(password: string): number {
     const possibleCombinations = Math.pow(this.getCharacterSpaceSize(password), password.length);
     return Math.log(possibleCombinations) / Math.log(2) + 1e-10;
   }

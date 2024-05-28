@@ -1,6 +1,6 @@
 import { AsyncPipe, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
-import { PasswordService } from '../../services/password.service';
+import { CommonPasswordService } from 'common/forms/validators';
 
 @Component({
   selector: 'common-password-strength',
@@ -17,6 +17,6 @@ export class CommonPasswordStrengthComponent {
   public rate = this.passwordService.passwordStrength();
 
   constructor(
-    private passwordService: PasswordService,
+    private passwordService: CommonPasswordService,
   ) { }
 }
