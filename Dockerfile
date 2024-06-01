@@ -10,4 +10,4 @@ ENV PROJECT $PROJECT
 RUN npm run build --project common
 
 EXPOSE 4200
-CMD npm run start ${PROJECT} -- --host 0.0.0.0
+CMD npm install && npm run start ${PROJECT} -- --host 0.0.0.0
