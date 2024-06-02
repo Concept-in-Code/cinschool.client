@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/portal/",
             "outputPath": "dist/portal",
             "index": "projects/portal/src/index.html",
             "browser": "projects/portal/src/main.ts",
@@ -116,6 +117,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/admin/",
             "outputPath": "dist/admin",
             "index": "projects/admin/src/index.html",
             "browser": "projects/admin/src/main.ts",
@@ -248,6 +250,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/account/",
             "outputPath": "dist/account",
             "index": "projects/account/src/index.html",
             "browser": "projects/account/src/main.ts",
@@ -339,5 +342,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "05301b09-5b8f-43f7-8fc5-cdb3fefaec70"
   }
 }
