@@ -28,7 +28,7 @@ export class CommonFeedbackService {
       case 'success':
       case 'info':
       default:
-        return 999999;
+        return 20000;
     }
   }
 
