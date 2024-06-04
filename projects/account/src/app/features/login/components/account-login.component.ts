@@ -6,12 +6,17 @@ import { CommonDividerComponent } from 'common/divider';
 import { CommonInputComponent } from 'common/forms/input';
 import { CommonPasswordInputComponent } from 'common/forms/password';
 import { CommonValidators } from 'common/forms/validators';
+import { take } from 'rxjs';
+import { AccountLoginService } from '../services/account-login.service';
 
 @Component({
   selector: 'account-login',
   templateUrl: './account-login.component.html',
   styleUrl: './account-login.component.scss',
   standalone: true,
+  providers: [
+    AccountLoginService,
+  ],
   imports: [
     CommonButtonComponent,
     CommonDividerComponent,
@@ -23,17 +28,21 @@ import { CommonValidators } from 'common/forms/validators';
 })
 export class AccountLoginComponent {
 
-  public form = this.fb.group({
+  public form = this.fb.nonNullable.group({
     email: ['', [Validators.required, CommonValidators.email]],
     password: ['', [Validators.required]],
   });
 
   constructor(
     private fb: FormBuilder,
+    private loginService: AccountLoginService,
   ) {}
 
   public onSubmit(): void {
-    console.log(this.form.value)
+    this.loginService
+    .register(this.form.getRawValue())
+    .pipe(take(1))
+    .subscribe();
   }
 
 }

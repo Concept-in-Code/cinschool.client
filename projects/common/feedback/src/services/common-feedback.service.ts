@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FeedbackComponent } from '../components/feedback.component';
-import { Feedback, FeedbackType } from '../typings/feedback';
+import { CommonFeedbackComponent } from '../components/common-feedback.component';
+import { CommonFeedback, CommonFeedbackType } from '../typings/common-feedback';
 
 @Injectable({ providedIn: 'root' })
-export class FeedbackService {
+export class CommonFeedbackService {
 
   constructor(
     private snackBar: MatSnackBar,
   ) { }
 
-  public open(feedback: Feedback): void {
+  public open(feedback: CommonFeedback): void {
     this.snackBar.dismiss();
-    this.snackBar.openFromComponent(FeedbackComponent, {
+    this.snackBar.openFromComponent(CommonFeedbackComponent, {
       duration: this.duration(feedback.type),
       data: feedback,
       verticalPosition: 'bottom',
@@ -21,14 +21,14 @@ export class FeedbackService {
     });
   }
 
-  private duration(type: FeedbackType): number {
+  private duration(type: CommonFeedbackType): number {
     switch (type) {
       case 'critical':
         return 999999;
       case 'success':
       case 'info':
       default:
-        return 15000;
+        return 999999;
     }
   }
 

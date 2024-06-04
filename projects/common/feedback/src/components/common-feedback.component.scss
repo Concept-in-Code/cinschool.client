@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  gap: 2rem;
+
+  .feedback-icon {
+    transform: scale(1.5);
+    align-self: center;
+  }
+
+  .details-container {
+    display: flex;
+    flex-flow: column;
+    gap: .5rem;
+    flex: 2 1 auto;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+
+      h3 {
+        margin: unset;
+        align-self: center;
+      }
+
+      common-button {
+        align-self: flex-end;
+      }
+    }
+
+    article {
+      display: flex;
+      flex-flow: column;
+      gap: .5rem;
+
+      div {
+        display: flex;
+        gap: 0.5rem;  
+      }
+    }
+  }
+}
+
+common-button, mat-icon {
+  color: inherit;
+}

@@ -1,5 +1,6 @@
 import { Environment } from 'common/core';
 
 export const environment: Environment = {
-  apiUrl: 'dsa'
+  apiUrl: `${location.protocol}//${location.host}/api`,
+  adminUrl: `${location.protocol}//${location.host}/admin/`
 };

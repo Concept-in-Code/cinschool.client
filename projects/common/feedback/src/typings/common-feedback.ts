@@ -1,10 +1,10 @@
-export type FeedbackType = 'error'
+export type CommonFeedbackType = 'error'
   | 'critical'
   | 'info'
   | 'success';
 
-export interface Feedback {
-  type: FeedbackType,
+export interface CommonFeedback {
+  type: CommonFeedbackType,
   message?: string,
   action?: string,
   variables?: Map<string, unknown>,

@@ -1,5 +1,2 @@
-/* Typings */
-export * from './src/typings/environment';
-
 /* Utils */
-export * from './src/utils/provide-http';
+export * from './src/utils/common-provide-http.utils';

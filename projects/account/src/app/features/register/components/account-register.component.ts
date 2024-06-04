@@ -6,7 +6,8 @@ import { CommonDividerComponent } from 'common/divider';
 import { CommonInputComponent } from 'common/forms/input';
 import { CommonPasswordConfirmComponent } from 'common/forms/password';
 import { CommonValidators } from 'common/forms/validators';
-import { RegisterService } from '../services/register.service';
+import { take } from 'rxjs';
+import { AccountRegisterService } from '../services/account-register.service';
 
 @Component({
   selector: 'account-register',
@@ -14,7 +15,7 @@ import { RegisterService } from '../services/register.service';
   styleUrl: './account-register.component.scss',
   standalone: true,
   providers: [
-    RegisterService,
+    AccountRegisterService,
   ],
   imports: [
     CommonButtonComponent,
@@ -35,12 +36,13 @@ export class AccountRegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private registerService: RegisterService,
+    private registerService: AccountRegisterService,
   ) {}
 
   public onSubmit(): void {
     this.registerService
       .register(this.form.getRawValue())
+      .pipe(take(1))
       .subscribe();
   }
 

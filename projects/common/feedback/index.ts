@@ -1,5 +1,5 @@
 /* Services */
-export * from './src/services/feedback.service';
+export * from './src/services/common-feedback.service';
 
 /* Typings */
-export * from './src/typings/feedback';
+export * from './src/typings/common-feedback';
