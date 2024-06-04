@@ -5,7 +5,7 @@ import { apiInterceptor } from '../interceptors/api.interceptor';
 import { errorInterceptor } from '../interceptors/error.interceptor';
 import { Environment } from '../typings/environment';
 
-export const provideCore = (environment: Environment): EnvironmentProviders =>
+export const provideHttp = (environment: Environment): EnvironmentProviders =>
   makeEnvironmentProviders([
     {
       provide:  ENVIRONMENT,

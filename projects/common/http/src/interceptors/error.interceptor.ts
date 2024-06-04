@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { FeedbackService } from 'common/feedback';
 import { EMPTY, catchError } from 'rxjs';
-import { FeedbackService } from '../services/feedback.service';
 
 export const errorInterceptor: HttpInterceptorFn = (request, next) => {
   const feedbackService: FeedbackService = inject(FeedbackService);
