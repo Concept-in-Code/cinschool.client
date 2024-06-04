@@ -39,7 +39,7 @@ export class CommonButtonComponent {
   }
 
   @Input()
-  public type?: CommonButtonType;
+  public type: CommonButtonType = 'button';
 
   public button: CommonButtonClass<CommonButton> = CommonDefaultButtonComponent;
 

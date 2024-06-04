@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonButtonComponent } from 'common/buttons';
-import { User } from 'common/core';
 import { CommonDividerComponent } from 'common/divider';
 import { CommonInputComponent } from 'common/forms/input';
 import { CommonPasswordConfirmComponent } from 'common/forms/password';
@@ -28,7 +27,7 @@ import { RegisterService } from '../services/register.service';
 })
 export class AccountRegisterComponent {
 
-  public form = this.fb.group({
+  public form = this.fb.nonNullable.group({
     username: ['', [Validators.required]],
     email: ['', [Validators.required, CommonValidators.email]],
     password: ['', [Validators.required]],
@@ -40,7 +39,8 @@ export class AccountRegisterComponent {
   ) {}
 
   public onSubmit(): void {
-    this.registerService.register(this.form.value as User)
+    this.registerService
+      .register(this.form.getRawValue())
       .subscribe();
   }
 

@@ -1,20 +1,21 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
 import { ENVIRONMENT } from '../constants/environment.constants';
-import { ApiInterceptor } from '../interceptors/api.interceptor';
+import { apiInterceptor } from '../interceptors/api.interceptor';
+import { errorInterceptor } from '../interceptors/error.interceptor';
 import { Environment } from '../typings/environment';
 
-export function provideCore(environment: Environment): EnvironmentProviders {
-  return makeEnvironmentProviders([
+export const provideCore = (environment: Environment): EnvironmentProviders =>
+  makeEnvironmentProviders([
     {
       provide:  ENVIRONMENT,
       useValue: environment
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useFactory: ApiInterceptor,
-      multi: true,
-      deps: [ENVIRONMENT],
-    },
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([
+        apiInterceptor,
+        errorInterceptor
+      ])
+    ),
   ]);
-}

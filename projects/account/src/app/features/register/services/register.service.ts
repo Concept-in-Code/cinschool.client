@@ -12,11 +12,7 @@ export class RegisterService {
     private router: Router,
   ) { }
 
-  public register(user: {
-    username: string;
-    email: string;
-    password: string;
-  }): Observable<{ user: User }> {
+  public register(user: any): Observable<{ user: User }> {
     return this.http
       .post<{ user: User }>('/users', { user })
       .pipe(

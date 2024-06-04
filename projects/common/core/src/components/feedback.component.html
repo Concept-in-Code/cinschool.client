@@ -1,0 +1,44 @@
+<div>
+  <common-button (click)="ref.dismissWithAction()">
+    <mat-icon fontIcon="close"></mat-icon>
+  </common-button>
+
+  <section>
+    
+    @if (feedback.type === 'error' || feedback.type === 'critical') {
+      <mat-icon fontIcon="error"></mat-icon>
+    } @else if (feedback.type === 'success') {
+      <mat-icon fontIcon="check_circle"></mat-icon>
+    } @else if (feedback.type === 'info') {
+      <mat-icon fontIcon="info"></mat-icon>
+    }
+
+    <div class="details-container">
+      @if (feedback.message) {
+        <h3>
+          {{ feedback.message }}
+        </h3>
+      }
+  
+      @if (feedback.action) {
+        <span>
+          {{ feedback.action }}
+        </span>
+      }
+
+      @if (feedback.variables) {
+        <common-divider></common-divider>
+        <article>
+          <strong>Details</strong>
+          @for (variable of feedback.variables | keyvalue; track variable) { 
+            <div>
+              <span>{{ variable.key }}:</span>
+              <span>{{ variable.value }}</span>
+            </div>
+          }
+        </article>
+      }
+    </div>
+    
+  </section>
+</div>
