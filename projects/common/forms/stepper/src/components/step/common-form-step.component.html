@@ -1,0 +1,54 @@
+<mat-expansion-panel
+  [hideToggle]="hideToggle || lastStepIdx === 0 || !!icon"
+  [expanded]="currentStepIdx === index"
+  (opened)="setCurrentStep()"
+  [class.step-invalid]="isInvalid()">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ title }}
+
+      @if (hasRequiredValidator) {
+        *
+      }
+    </mat-panel-title>
+
+    <mat-panel-description>
+      {{ description }}
+    </mat-panel-description>
+
+    @if (icon) {
+      <mat-icon [fontIcon]="icon"></mat-icon>
+    }
+  </mat-expansion-panel-header>
+
+  <div class="container">
+    <!-- Form controls of parent-->
+    <div class="controls">
+      <ng-content></ng-content>
+    </div>
+  
+    @if (showBackButton() || showNextButton()) {
+      <common-divider></common-divider>
+    }
+  
+    <section>
+      @if (showBackButton()) {
+        <common-button
+          layout="secondary"
+          (click)="back()">
+          Zurück
+        </common-button>
+      }
+
+      @if (showNextButton()) {
+        <common-button
+          layout="primary"
+          (click)="next()">
+          Weiter
+        </common-button>
+      }
+
+    </section>
+  </div>
+
+</mat-expansion-panel>

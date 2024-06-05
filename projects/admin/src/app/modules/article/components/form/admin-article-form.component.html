@@ -1,0 +1,17 @@
+<common-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <common-form-step title="Inhalt" [formGroup]="contentForm">
+    <common-input
+      formControlName="title"
+      label="Titel">
+    </common-input>
+
+    <common-input
+      formControlName="content"
+      label="Inhalt">
+    </common-input>
+  </common-form-step>
+
+  <common-form-step title="Weitere Daten" [formGroup]="metadataForm">
+  </common-form-step>
+
+</common-form-stepper>

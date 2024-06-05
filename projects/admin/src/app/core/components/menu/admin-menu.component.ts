@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonLayoutComponent } from 'common/layouts';
+import { articleUrl } from '../../constants/admin-url.constants';
 
 @Component({
   selector: 'admin-menu',
@@ -13,5 +14,7 @@ import { CommonLayoutComponent } from 'common/layouts';
   ],
 })
 export class AdminMenuComponent {
+
+  public articleUrl = articleUrl;
 
 }

@@ -1,9 +1,11 @@
 main {
-  display: flex;
-  flex-flow: column;
-  padding-top: var(--mat-toolbar-height);
+  padding-top: calc(var(--mat-toolbar-height) + 4rem);
 
   height: calc(100vh - var(--mat-toolbar-height));
+
+  width: 90rem;
+  max-width: calc(100% - 2rem);
+  margin: auto;
 }
 
 common-footer {

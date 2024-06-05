@@ -1,9 +1,16 @@
-@if (feedback.type === 'error' || feedback.type === 'critical') {
-  <mat-icon class="feedback-icon" fontIcon="error"></mat-icon>
-} @else if (feedback.type === 'success') {
-  <mat-icon class="feedback-icon" fontIcon="check_circle"></mat-icon>
-} @else if (feedback.type === 'info') {
-  <mat-icon class="feedback-icon" fontIcon="info"></mat-icon>
+@switch(feedback.type) {
+
+  @case ('error') {
+    <mat-icon class="feedback-icon" fontIcon="error"></mat-icon>
+  }
+
+  @case ('success') {
+    <mat-icon class="feedback-icon" fontIcon="check_circle"></mat-icon>
+  }
+
+  @case ('info') {
+    <mat-icon class="feedback-icon" fontIcon="info"></mat-icon>
+  }
 }
 
 <div class="details-container">

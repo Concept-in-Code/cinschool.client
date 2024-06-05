@@ -1,0 +1,22 @@
+<mat-accordion>
+  <ng-content></ng-content>
+</mat-accordion>
+
+<section>
+  <common-button
+    layout="primary"
+    [disabled]="(valid | async) === false"
+    (click)="save()">
+    Speichern
+  </common-button>
+
+  <common-button
+    (click)="cancel()">
+    Abbrechen
+  </common-button>
+
+  <common-button
+    (click)="reset()">
+    Zurücksetzen
+  </common-button>
+</section>

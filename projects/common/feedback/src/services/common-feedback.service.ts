@@ -26,6 +26,8 @@ export class CommonFeedbackService {
       case 'critical':
         return 999999;
       case 'success':
+        return 15000;
+      case 'error':
       case 'info':
       default:
         return 20000;
