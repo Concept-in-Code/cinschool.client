@@ -1,7 +1,9 @@
-<common-header></common-header>
+<common-header>
+  <ng-content select="[header]"></ng-content>
+</common-header>
 
 <main>
-  <ng-content></ng-content>
+  <ng-content select="[main]"></ng-content>
 </main>
 
 <common-footer [version]="version"></common-footer>

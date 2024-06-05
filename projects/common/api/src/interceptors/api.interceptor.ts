@@ -1,7 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Environment } from '../../../core/src/typings/environment';
-import { ENVIRONMENT } from '../constants/environment.constants';
+import { ENVIRONMENT, Environment } from 'common/core';
 
 export const apiInterceptor: HttpInterceptorFn = (request, next) => {
   const environment: Environment = inject(ENVIRONMENT);

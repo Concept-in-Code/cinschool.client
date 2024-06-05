@@ -4,6 +4,9 @@ mat-toolbar {
   z-index: 99;
 
   height: var(--mat-toolbar-height);
+
+  display: flex;
+  justify-content: space-between;
 }
 
 img {

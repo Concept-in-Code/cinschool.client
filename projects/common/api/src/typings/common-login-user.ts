@@ -1,4 +1,4 @@
-export type AccountLoginUser = {
+export type CommonLoginUser = {
   email: string,
   password: string,
 }

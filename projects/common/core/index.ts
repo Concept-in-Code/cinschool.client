@@ -1,3 +1,6 @@
+/* Constants */
+export * from './src/constants/environment-token.constants';
+
 /* Typings */
 export * from './src/typings/environment';
 export * from './src/typings/maybe';
