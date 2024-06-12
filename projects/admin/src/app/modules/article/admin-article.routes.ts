@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { articleUrl } from '../../core/constants/admin-url.constants';
+import { articleUrl, slug } from '../../core/constants/admin-url.constants';
 
 export const adminArticleRoutes: Routes = [
   {
@@ -13,7 +13,7 @@ export const adminArticleRoutes: Routes = [
       .then(mod => mod.AdminArticleFormComponent),
   },
   {
-    path: `${articleUrl}/:slug/form`,
+    path: `${articleUrl}/:${slug}/form`,
     loadComponent: () => import('./components/form/admin-article-form.component')
       .then(mod => mod.AdminArticleFormComponent),
   }

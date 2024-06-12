@@ -1,0 +1,17 @@
+@for (action of actions; track action) {
+
+  @if (actionComponent(action); as action) {
+    <ng-container>
+      <ng-container *ngComponentOutlet="action.component; inputs: action.inputs">
+      </ng-container>
+    </ng-container>
+  } @else {
+    <div [class.disabled]="isDisabled(action)">
+      <common-button
+        [disabled]="isDisabled(action)"
+        (click)="$event.stopPropagation(); callback(action);">
+        <mat-icon [fontIcon]="icon(action)"></mat-icon>
+      </common-button>
+    </div>
+  }
+}

@@ -1,4 +1,4 @@
-<h1>Artikel anlegen</h1>
+<h1>{{ contentForm.value.slug ? 'Artikel bearbeiten' : 'Artikel anlegen' }}</h1>
 
 <common-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <common-form-step title="Inhalt" [formGroup]="contentForm">

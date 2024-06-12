@@ -1,13 +1,9 @@
 main {
   padding-top: calc(var(--mat-toolbar-height) + 4rem);
 
-  height: calc(100vh - var(--mat-toolbar-height));
+  min-height: calc(100vh - var(--mat-toolbar-height));
 
   width: 90rem;
   max-width: calc(100% - 2rem);
-  margin: auto;
-}
-
-common-footer {
-  margin-top: 5rem;
+  margin: auto auto 5rem auto;
 }
