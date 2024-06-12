@@ -336,5 +336,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

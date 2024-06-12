@@ -20,7 +20,7 @@ import { CommonPasswordStrengthComponent } from '../strength/common-password-str
     },
     {
       provide: NG_VALUE_ACCESSOR,
-      multi:true,
+      multi: true,
       useExisting: CommonPasswordConfirmComponent
     },
   ],
