@@ -23,7 +23,7 @@ export class CommonTagInputComponent implements AfterContentInit, ControlValueAc
 
   //TODO: Remove this entirely! It's just for testing the API
   public ngAfterContentInit(): void {
-    this.onChange?.(['Tag1', 'Tag2']);
+    this.onChange?.(['Tag3']);
     this.onTouch?.();
   }
 

@@ -6,9 +6,13 @@ html, body {
   background-color: var(--color-background);
 }
 
-body { 
+body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1 {
+  margin: unset;
 }
 
 .border-box {

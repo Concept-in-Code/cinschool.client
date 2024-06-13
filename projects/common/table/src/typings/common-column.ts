@@ -8,4 +8,5 @@ export type CommonColumn<T> = {
   sort?: boolean,
   type?: CommonColumnType,
   value?: ((row: T) => Observable<Maybe<string>> | Maybe<string>),
+  action?: boolean,
 };

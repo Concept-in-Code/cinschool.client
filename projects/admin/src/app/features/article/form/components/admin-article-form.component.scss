@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+}
+
+common-input {
+  width: 50%;
+}

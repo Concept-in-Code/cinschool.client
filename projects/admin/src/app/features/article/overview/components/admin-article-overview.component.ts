@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'common/core';
-import { CommonColumn, CommonRowAction, CommonSortPaginate, CommonTableComponent } from 'common/table';
-import { ArticleAdminReadService } from '../../services/admin-article-read.service';
-import { AdminArticleDetailsComponent } from '../details/admin-article-details.component';
+import { CommonFilterAreaComponent } from 'common/filter';
+import { CommonColumn, CommonPaginate, CommonRowAction, CommonTableComponent } from 'common/table';
+import { AdminArticleOverviewDetailsComponent } from '../modules/details/admin-article-overview-details.component';
+import { AdminArticleOverviewFilterComponent } from '../modules/filter/admin-article-overview-filter.component';
+import { ArticleAdminReadService } from '../services/admin-article-read.service';
 
 @Component({
   selector: 'admin-article-overview',
@@ -14,7 +16,9 @@ import { AdminArticleDetailsComponent } from '../details/admin-article-details.c
     ArticleAdminReadService,
   ],
   imports: [
-    AdminArticleDetailsComponent,
+    AdminArticleOverviewDetailsComponent,
+    AdminArticleOverviewFilterComponent,
+    CommonFilterAreaComponent,
     CommonTableComponent,
   ],
 })
@@ -23,7 +27,10 @@ export class AdminArticleOverviewComponent {
   public actions: CommonRowAction<Article>[] = [
     {
       icon: 'edit',
-      callback: row => this.router.navigate([row?.slug, 'form'], { relativeTo: this.activatedRoute }),
+      callback: row => this.router.navigate(
+        [row?.slug, 'form'],
+        { relativeTo: this.activatedRoute }
+      ),
     },
     {
       icon: 'delete',
@@ -35,6 +42,11 @@ export class AdminArticleOverviewComponent {
     {
       field: 'title',
       label: 'Titel',
+    },
+    {
+      field: 'createdAt',
+      label: 'Erstellungsdatum',
+      type: 'DATETIME'
     },
     {
       field: 'author.username',
@@ -54,7 +66,7 @@ export class AdminArticleOverviewComponent {
     private router: Router,
   ) { }
 
-  public updateParams($event: CommonSortPaginate) {
+  public paginate($event: CommonPaginate) {
     console.log($event);
   }
 

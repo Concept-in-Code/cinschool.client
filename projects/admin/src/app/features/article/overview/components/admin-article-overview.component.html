@@ -1,0 +1,15 @@
+<h1>Artikel</h1>
+
+<admin-article-overview-filter>
+</admin-article-overview-filter>
+
+<common-table
+  [data]="data"
+  [actions]="actions"
+  [columns]="columns"
+  (paginate)="paginate($event)">
+  <ng-template #details let-row>
+    <admin-article-overview-details [article]="row">
+    </admin-article-overview-details>
+  </ng-template>
+</common-table>

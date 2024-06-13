@@ -5,10 +5,10 @@ import { CommonInputComponent } from 'common/forms/input';
 import { CommonRichtextEditorComponent } from 'common/forms/richtext';
 import { CommonFormStepComponent, CommonFormStepperComponent } from 'common/forms/stepper';
 import { CommonTagInputComponent } from 'common/forms/tag-input';
-import { filter, switchMap, take } from 'rxjs';
-import { articleUrl, slug } from '../../../../core/constants/admin-url.constants';
-import { ArticleAdminReadService } from '../../services/admin-article-read.service';
-import { ArticleAdminSaveService } from '../../services/admin-article-save.service';
+import { filter, first, switchMap, take } from 'rxjs';
+import { articleUrl, identifier } from '../../../../core/constants/admin-url.constants';
+import { ArticleAdminReadService } from '../../overview/services/admin-article-read.service';
+import { ArticleAdminSaveService } from '../services/admin-article-save.service';
 
 @Component({
   selector: 'admin-article-form',
@@ -53,8 +53,8 @@ export class AdminArticleFormComponent implements OnInit {
   public ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
-        filter(params => !!params[slug]),
-        switchMap(params => this.readService.getArticle(params[slug])),
+        filter(params => !!params[identifier]),
+        switchMap(params => this.readService.getArticle(params[identifier])),
         take(1)
       ).subscribe(article => {
 
@@ -80,7 +80,7 @@ export class AdminArticleFormComponent implements OnInit {
       ...this.contentForm.getRawValue(),
       ...this.metadataForm.value,
     }).pipe(
-      take(1)
+      first(),
     ).subscribe(() => this.routeOverview());
   }
 

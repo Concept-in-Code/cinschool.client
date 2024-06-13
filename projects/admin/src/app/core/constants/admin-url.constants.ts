@@ -1,2 +1,2 @@
 export const articleUrl = 'articles';
-export const slug = 'slug';
+export const identifier = 'slug';

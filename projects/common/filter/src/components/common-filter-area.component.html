@@ -1,0 +1,36 @@
+<section>
+
+  <common-button
+    layout="secondary"
+    (click)="filtersCollapsed = !filtersCollapsed">
+      <div>
+        <mat-icon [fontIcon]="filtersCollapsed ? 'filter_alt': 'arrow_upward'"></mat-icon>
+
+        <span>Filter</span>
+
+        @if (filtersActive | async) {
+          <mat-icon
+            class="check-icon"
+            fontIcon="check">
+          </mat-icon>
+        }
+      </div>
+  </common-button>
+
+</section>
+<mat-card [@collapse]="!filtersCollapsed">
+  <mat-card-content>
+
+    <!-- The filters to use in this filter area -->
+    <div class="search">
+      <ng-content></ng-content>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <common-button layout="secondary"
+      (click)="clearFilters()">
+      <span>Filter zurücksetzen</span>
+    </common-button>
+  </mat-card-actions>
+</mat-card>
