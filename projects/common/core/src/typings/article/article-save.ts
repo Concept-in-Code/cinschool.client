@@ -1,4 +1,4 @@
-import { Maybe } from 'common/core';
+import { Maybe } from "../maybe";
 
 export type ArticleSave = {
   slug?: Maybe<string>,
