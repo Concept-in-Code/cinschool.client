@@ -6,6 +6,9 @@ import { CommonColumn, CommonPaginate, CommonRowAction, CommonTableComponent } f
 import { AdminArticleOverviewDetailsComponent } from '../modules/details/admin-article-overview-details.component';
 import { AdminArticleOverviewFilterComponent } from '../modules/filter/admin-article-overview-filter.component';
 import { ArticleAdminReadService } from '../services/admin-article-read.service';
+import { ArticleAdminDeleteService } from '../services/admin-article-delete.service';
+import { first } from 'rxjs';
+import { articleUrl } from '../../../../core/constants/admin-url.constants';
 
 @Component({
   selector: 'admin-article-overview',
@@ -14,6 +17,7 @@ import { ArticleAdminReadService } from '../services/admin-article-read.service'
   standalone: true,
   providers: [
     ArticleAdminReadService,
+    ArticleAdminDeleteService,
   ],
   imports: [
     AdminArticleOverviewDetailsComponent,
@@ -34,7 +38,15 @@ export class AdminArticleOverviewComponent {
     },
     {
       icon: 'delete',
-      callback: row => console.log('Delete me'),
+      callback: row => {
+        if(!!row && !!row.slug) {
+          this.articleDeleteService.deleteArticle(row.slug)
+          .pipe(
+            first()
+          ).subscribe(() => this.router.navigate([articleUrl]));
+          //TODO: How to reload the page content?
+        }
+      }
     },
   ];
 
@@ -63,6 +75,7 @@ export class AdminArticleOverviewComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private articleReadService: ArticleAdminReadService,
+    private articleDeleteService: ArticleAdminDeleteService,
     private router: Router,
   ) { }
 
