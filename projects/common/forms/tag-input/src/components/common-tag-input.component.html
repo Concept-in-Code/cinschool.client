@@ -1,3 +1,20 @@
-<a href="https://material.angular.io/components/chips">
-  Angular Material Chips
-</a>
+<mat-form-field appearance="outline" class="chip-list">
+  <mat-label>{{ label }}</mat-label>
+  <mat-chip-grid #chipGrid [attr.aria-label]="ariaLabel">
+    @for (datum of data; track $index) {
+      <mat-chip-row (removed)="remove(datum)"> 
+        {{datum}}
+        <button matChipRemove [attr.aria-label]="'remove ' + datum">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </mat-chip-grid>
+  <input
+    name="currentChip"
+    [placeholder]="placeholder"
+    [matChipInputFor]="chipGrid"  
+    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+    [matChipInputAddOnBlur]="addOnBlur"
+    (matChipInputTokenEnd)="add($event)" />
+</mat-form-field>
