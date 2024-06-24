@@ -1,8 +1,8 @@
-<mat-form-field appearance="outline" class="chip-list">
+<mat-form-field appearance="outline">
   <mat-label>{{ label }}</mat-label>
   <mat-chip-grid #chipGrid [attr.aria-label]="ariaLabel">
     @for (datum of data; track $index) {
-      <mat-chip-row (removed)="remove(datum)"> 
+      <mat-chip-row (removed)="remove(datum)">
         {{datum}}
         <button matChipRemove [attr.aria-label]="'remove ' + datum">
           <mat-icon>cancel</mat-icon>
@@ -13,7 +13,7 @@
   <input
     name="currentChip"
     [placeholder]="placeholder"
-    [matChipInputFor]="chipGrid"  
+    [matChipInputFor]="chipGrid"
     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
     [matChipInputAddOnBlur]="addOnBlur"
     (matChipInputTokenEnd)="add($event)" />

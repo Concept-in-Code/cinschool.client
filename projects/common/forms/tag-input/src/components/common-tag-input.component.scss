@@ -1,3 +1,20 @@
-.chip-list {
-    width: 100%;
+mat-form-field {
+  width: 100%;
+}
+
+:host ::ng-deep {
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  .mdc-text-field {
+    background-color: var(--color-lightest) !important;
+    border-radius: var(--shape) !important;
+  }
+
+  .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: var(--shape) !important;
+  }
+
 }
